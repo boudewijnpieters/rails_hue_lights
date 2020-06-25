@@ -1,0 +1,17 @@
+<h1>Page for Light Number <%= params[:id] %></h1>
+<table>
+<tbody>
+  <tr>
+    <td><%= @light %></td>
+  </tr>
+  <tr>
+    <td>Current brightness value: <%= @light.brightness %></td>
+  </tr>
+</tbody>
+</table>
+<%= form_with(url: "/lights/#{params[:id]}/adjust_brightness", method: "post", local: true) do %>
+  <%= label_tag(:brightness, "New brightness value:") %>
+  <%= text_field_tag :brightness %>
+  <%= submit_tag("Adjust") %>
+  <%= @light.brightness %>
+<% end %>
